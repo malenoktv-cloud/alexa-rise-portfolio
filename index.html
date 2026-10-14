@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +10,8 @@
 
   <header class="header">
   <div class="container header-container">
-    <a href="#" class="logo" aria-label="Alexa Rise home">
-      📷
+    <a href="#home" class="logo" aria-label="Back to home">
+    <span class="logo-camera" aria-hidden="true"></span>
     </a>
 
     <nav class="nav">
@@ -22,24 +22,53 @@
       <a href="#contacts">Contacts</a>
     </nav>
 
-    <div class="language">
-      <button class="language-button active" type="button">en</button>
-      <span>/</span>
-      <button class="language-button" type="button">ru</button>
+   
+  
+   <div class="language">
+     <button
+       class="language-button active"
+       type="button"
+       data-lang="en"
+     >
+       en
+     </button>
+
+     <span>/</span>
+
+     <button
+       class="language-button"
+       type="button"
+       data-lang="ru"
+     >
+       ru
+     </button>
     </div>
-    
+
+
+  <!-- Переключатель светлой и тёмной темы -->
+     <button
+     class="theme-toggle"
+     type="button"
+     aria-label="Switch to light theme"
+     title="Change theme"
+     >
+    ☀️
+    </button>
+
+    <!-- Бургер-меню -->
     <button class="burger" type="button" aria-label="Open menu">
     <span></span>
     <span></span>
     <span></span>
     </button>
-  </div>
-</header>
 
-<div class="menu-overlay"></div>
+    </div>
+    </header>
 
-<main>
-    <section class="hero">
+    <div class="menu-overlay"></div>
+
+   <main>
+    <section class="hero" id="home">
   <div class="container hero-container">
     <div class="hero-content">
       <h1 class="hero-title">Alexa Rise</h1>
@@ -126,17 +155,27 @@
     <span></span>
   </div>
 
-  <div class="video-player">
-    <img
-      class="video-image"
-      src="images/video.jpg"
-      alt="Wedding photography video"
-    >
+  
+<div class="video-player">
 
-    <button class="video-play" type="button" aria-label="Play video">
-      <img src="images/icons/play.svg" alt="">
-    </button>
-  </div>
+  <video
+    class="video-element"
+    id="portfolio-video"
+    poster="images/video.jpg"
+    controls
+    playsinline
+    preload="metadata"
+  >
+    <source src="images/video.mp4" type="video/mp4">
+    Your browser does not support video.
+  </video>
+
+  <button class="video-play" type="button" aria-label="Play video">
+    <img src="images/icons/play.svg" alt="">
+  </button>
+
+</div>
+
 
 </section>
 <section id="price" class="price section">
@@ -245,6 +284,39 @@
 
 </section>
   </main>
+   
+<!-- МОДАЛЬНОЕ ОКНО ДЛЯ ПРОСМОТРА ФОТОГРАФИЙ -->
+
+<dialog class="photo-modal" id="photo-modal" aria-label="Просмотр фотографии">
+
+  <!-- Кнопка закрытия -->
+  <button class="photo-modal-close"
+          type="button"
+          aria-label="Close photo">
+    &times;
+  </button>
+
+  <!-- Предыдущая фотография -->
+  <button class="photo-modal-prev"
+          type="button"
+          aria-label="Previous photo">
+    &#10094;
+  </button>
+
+  <!-- Увеличенная фотография -->
+  <img class="photo-modal-image" src="" alt="">
+
+  <!-- Следующая фотография -->
+  <button class="photo-modal-next"
+          type="button"
+          aria-label="Next photo">
+    &#10095;
+  </button>
+
+  <!-- Счётчик фотографий -->
+  <p class="photo-modal-counter"></p>
+
+</dialog>
 
   <footer class="footer">
 
@@ -270,6 +342,7 @@
   </div>
 
 </footer>
-  <script src="script.js"></script>
+<script src="script.js"></script>
+<script src="translate.js"></script>
 </body>
 </html>
